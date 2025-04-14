@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import gsap from "gsap";
 
 const Navbar = () => {
-  const navbarRef = useRef<HTMLDivElement>(null);
+  const navbarRef = useRef(null);
   const lastScrollY = useRef(0);
   const ticking = useRef(false); // To prevent multiple animations from triggering at once
 
@@ -44,9 +44,13 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header
+   <section>
+    {/* <div className="absolute top-0 left-0 z-10 w-full">
+        <img src="/public/bg.png" alt="" />
+      </div> */}
+     <header
       ref={navbarRef}
-      className="bg-[#575353] shadow-md max-w-6xl mx-auto rounded-3xl fixed top-6 left-0 right-0 z-50 px-4"
+      className="bg-[#575353] shadow-md max-w-7xl mx-auto rounded-3xl fixed top-6 left-0 right-0 z-50 px-4"
     >
       <div className="px-6 py-4 flex justify-between items-center">
         {/* Logo */}
@@ -80,6 +84,7 @@ const Navbar = () => {
         </div>
       </div>
     </header>
+   </section>
   );
 };
 
