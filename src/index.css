@@ -5,6 +5,10 @@
   --gradient: radial-gradient(circle, #e5e5e5 0%, #fff 100%);
 }
 
+/* :root {
+  --gradient: radial-gradient(circle, #e5e5e5 0%, #fff 100%);
+}
+
 html,
 body {
   width: 100dvw;
@@ -17,4 +21,4 @@ body {
 
 section {
   width: 100dvw;
-}
+} */
