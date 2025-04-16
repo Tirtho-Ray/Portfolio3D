@@ -44,7 +44,7 @@ const Navbar = () => {
   }, []);
 
   return (
-   <section>
+   <section className="">
     {/* <div className="absolute top-0 left-0 z-10 w-full">
         <img src="/public/bg.png" alt="" />
       </div> */}
@@ -72,14 +72,14 @@ const Navbar = () => {
         </nav>
 
         {/* Contact Button */}
-        <div className="relative group overflow-hidden inline-block rounded-full">
-          <button className="relative z-10 px-6 py-2 text-white-50 border border-white rounded-full font-semibold group-hover:text-black-50 transition-colors duration-1000">
+        <div className="relative group overflow-hidden inline-block rounded-xl">
+          <button className="relative z-10 px-6 py-2 text-white-50 border border-white rounded-xl font-semibold group-hover:text-black-50 transition-colors duration-1000">
             Contact Me
           </button>
 
           {/* Middle Dot that expands to full bg */}
           <span className="absolute inset-0 flex items-center justify-center">
-            <span className="w-2 h-2 bg-[#e7e6ef] rounded-full scale-0 group-hover:scale-[100] transition-transform duration-700 ease-in-out origin-center z-0"></span>
+            <span className="w-2 h-2 bg-[#e7e6ef] rounded-xl scale-0 group-hover:scale-[100] transition-transform duration-700 ease-in-out origin-center z-0"></span>
           </span>
         </div>
       </div>
