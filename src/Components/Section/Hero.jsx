@@ -3,8 +3,14 @@ import gsap from "gsap";
 import { BsLightbulb } from "react-icons/bs";
 import { GiBrain } from "react-icons/gi";
 import { FaPaintBrush } from "react-icons/fa";
+import { FaCode } from "react-icons/fa6";
+import Button from "../ui/Button";
 
 const words = [
+  {
+    text: "Code",
+    icon: <FaCode className="text-yellow-400" size={28} />,
+  },
   {
     text: "Ideas",
     icon: <BsLightbulb className="text-yellow-400" size={28} />,
@@ -74,8 +80,16 @@ const Hero = () => {
           <h1 className="hero-line mt-2">That Deliver The World</h1>
         </div>
         <p className="text-white-50 md:text-xl relative z-10 pointer-events-none mt-5 hero-line ">
-          Hi,am Tirtho Dev, a developer based in Croatia with a passion for code.
+        Hi, I’m Tirtho Dev, a developer based in Croatia with a passion for
+        code.
         </p>
+        {/* work button */}
+        <div className="mt-4 hero-line">
+        <Button
+              text="See My Work"
+              
+            />
+        </div>
       </div>
     </div>
   );

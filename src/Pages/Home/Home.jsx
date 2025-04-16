@@ -1,5 +1,5 @@
 import React from 'react';
-import Hero from '../../Components/ui/Hero';
+import Hero from '../../Components/Section/Hero';
 
 const Home = () => {
     return (
