@@ -4,12 +4,12 @@ import Footer from "../Components/Footer/Footer";
 
 const MainLayout = () => {
   return (
-    <div className="max-w-7xl mx-auto md:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto fixed z-100 px-4 " >
+    <div className="max-w-7xl mx-auto">
+      <div className=" z-50 " >
         <Navbar />
       </div>
-      <div className=" pt-12 lg:pt-28 px-2">
-        {/* Padding to avoid overlap */}
+      <div className="pt-20 lg:pt-28 px-2 md:px-4 lg:px-0">
+       
         <Outlet />
       </div>
 

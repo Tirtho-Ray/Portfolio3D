@@ -1,34 +1,29 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
+import { FiMenu, FiX } from "react-icons/fi";
+import SongBtn from "../ui/SongBtn";
 
 const Navbar = () => {
   const navbarRef = useRef(null);
+  const overlayRef = useRef(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
-  const ticking = useRef(false); // To prevent multiple animations from triggering at once
+  const ticking = useRef(false);
 
+  // Navbar Scroll Hide/Show
   useEffect(() => {
     const handleScroll = () => {
       if (!ticking.current) {
         window.requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
 
-          if (navbarRef.current) {
-            if (currentScrollY > lastScrollY.current) {
-              // Scrolling Down
-              gsap.to(navbarRef.current, {
-                y: -100, // Move up
-                duration: 0.6, // Smooth transition
-                ease: "power2.out",
-              });
-            } else {
-              // Scrolling Up
-              gsap.to(navbarRef.current, {
-                y: 0, // Move back to top
-                duration: 0.6, // Smooth transition
-                ease: "power2.out",
-              });
-            }
+          if (navbarRef.current && !menuOpen) {
+            gsap.to(navbarRef.current, {
+              y: currentScrollY > lastScrollY.current ? -150 : 0,
+              duration: 0.6,
+              ease: "power2.out",
+            });
           }
 
           lastScrollY.current = currentScrollY;
@@ -41,50 +36,87 @@ const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [menuOpen]);
+
+  // Open Menu Animation
+  const openMenu = () => {
+    setMenuOpen(true);
+    gsap.fromTo(
+      overlayRef.current,
+      { y: "-100%", opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }
+    );
+    document.body.style.overflow = "hidden"; // Prevent scroll
+  };
+
+  // Close Menu Animation
+  const closeMenu = () => {
+    gsap.to(overlayRef.current, {
+      y: "-100%",
+      opacity: 0,
+      duration: 0.8,
+      ease: "power2.inOut",
+      onComplete: () => {
+        setMenuOpen(false);
+        document.body.style.overflow = "auto";
+      },
+    });
+  };
 
   return (
-   <section className="">
-    {/* <div className="absolute top-0 left-0 z-10 w-full">
-        <img src="/public/bg.png" alt="" />
-      </div> */}
-     <header
-      ref={navbarRef}
-      className="bg-[#575353] shadow-md max-w-7xl mx-auto rounded-3xl fixed top-6 left-0 right-0 z-50 px-4"
-    >
-      <div className="px-6 py-4 flex justify-between items-center">
-        {/* Logo */}
-        <div className="text-2xl font-bold text-white-50 tracking-tight">
-          <Link to="/">Tirtho Dev</Link>
+    <>
+      <nav
+        ref={navbarRef}
+        className="fixed w-full top-10 left-1/2 transform -translate-x-1/2 z-50 px-2 md:px-4 lg:px-6"
+      >
+        <div className="flex justify-between items-center bg-[#575353] shadow-md rounded-3xl py-4 max-w-7xl mx-auto px-3 md:px-6 lg:px-6">
+          <div className="md:text-xl lg:text-2xl font-bold text-white tracking-tight">
+            <Link to="/">Tirtho Dev</Link>
+          </div>
+
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex space-x-10 text-white font-medium md:text-md lg:text-lg">
+            <Link to="/" className="hover:text-red-400 transition duration-200">Work</Link>
+            <Link to="/" className="hover:text-red-400 transition duration-200">Experience</Link>
+            <Link to="/" className="hover:text-red-400 transition duration-200">Projects</Link>
+          </nav>
+
+          {/* Buttons */}
+          <div className="flex items-center gap-3">
+            <div className="relative group overflow-hidden inline-block rounded-xl hidden md:block">
+              <button className="relative z-10 px-6 py-2 text-white border border-white rounded-xl font-semibold group-hover:text-black transition-colors duration-1000">
+                Contact Me
+              </button>
+              <span className="absolute inset-0 flex items-center justify-center">
+                <span className="w-2 h-2 bg-[#e7e6ef] rounded-xl scale-0 group-hover:scale-[100] transition-transform duration-700 ease-in-out origin-center z-0"></span>
+              </span>
+            </div>
+            <SongBtn />
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden text-white text-3xl"
+              onClick={menuOpen ? closeMenu : openMenu}
+            >
+              {menuOpen ? <FiX /> : <FiMenu />}
+            </button>
+          </div>
         </div>
+      </nav>
 
-        {/* Nav Links */}
-        <nav className="flex space-x-10 text-white font-medium text-lg">
-          <Link to="/" className="hover:text-red-400 transition duration-200">
-            Work
-          </Link>
-          <Link to="/" className="hover:text-red-400 transition duration-200">
-            Experience
-          </Link>
-          <Link to="/" className="hover:text-red-400 transition duration-200">
-            Projects
-          </Link>
-        </nav>
-
-        {/* Contact Button */}
-        <div className="relative group overflow-hidden inline-block rounded-xl">
-          <button className="relative z-10 px-6 py-2 text-white-50 border border-white rounded-xl font-semibold group-hover:text-black-50 transition-colors duration-1000">
-            Contact Me
-          </button>
-
-          {/* Middle Dot that expands to full bg */}
-          <span className="absolute inset-0 flex items-center justify-center">
-            <span className="w-2 h-2 bg-[#e7e6ef] rounded-xl scale-0 group-hover:scale-[100] transition-transform duration-700 ease-in-out origin-center z-0"></span>
-          </span>
+      {/* Mobile Full Screen Overlay */}
+      {menuOpen && (
+        <div
+          ref={overlayRef}
+          className="fixed top-0 left-0 w-full h-screen bg-[#1e1e1e] z-[999] flex flex-col items-center justify-center text-white text-3xl space-y-8 overflow-hidden"
+        >
+          <Link to="/" onClick={closeMenu}>Work</Link>
+          <Link to="/" onClick={closeMenu}>Experience</Link>
+          <Link to="/" onClick={closeMenu}>Projects</Link>
+          <Link to="/" onClick={closeMenu}>Contact Me</Link>
         </div>
-      </div>
-    </header>
-   </section>
+      )}
+    </>
   );
 };
 
