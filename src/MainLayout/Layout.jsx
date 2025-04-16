@@ -8,7 +8,7 @@ const MainLayout = () => {
       <div className="max-w-7xl mx-auto fixed z-100 px-4 " >
         <Navbar />
       </div>
-      <div className=" pt-12 lg:pt-28 ">
+      <div className=" pt-12 lg:pt-28 px-2">
         {/* Padding to avoid overlap */}
         <Outlet />
       </div>

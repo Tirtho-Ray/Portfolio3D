@@ -62,7 +62,7 @@ const Hero = () => {
   return (
     <div className="mt-28 mb-28">
       <div>
-        <div className="lg:text-5xl font-bold">
+        <div className="text-2xl md:text-4xl lg:text-5xl font-bold">
           <h1 className="hero-line flex items-center gap-3">
             Shaping{" "}
             <span className="changing-word inline-flex items-center gap-2 text-blue-400">
