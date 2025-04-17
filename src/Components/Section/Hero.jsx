@@ -88,12 +88,13 @@ const Hero = () => {
       </div>
 
       {/* Right 3D Section */}
-      <div className="absolute top-0 right-0 mt-0 md:mt-0 md:top-10 md:right-[-80px] w-full md:w-[70%] h-full z-0">
-  <HeroExperience />
-</div>
+      <figure>
+        <div className="absolute top-0 right-0 mt-0 md:mt-0 md:top-10 md:right-[-80px] w-full md:w-[70%] h-full z-0">
+          <HeroExperience />
+        </div>
+      </figure>
     </div>
   );
 };
-
 
 export default Hero;
