@@ -1,39 +1,35 @@
 import * as THREE from 'three';
-import React from 'react';
-
 const HeroLight = () => {
-  return (
-    <>
-      {/* Ambient Light - soft base lighting */}
-      <ambientLight intensity={0.4} />
-
-      {/* Key Light - main spotlight for focus */}
-      <spotLight
-        position={[5, 8, 10]}
-        intensity={1.5}
-        angle={0.3}
-        penumbra={0.5}
-        castShadow
-        color={"#ffffff"}
-      />
-
-      {/* Fill Light - softens the shadows */}
-      <directionalLight
-        position={[-5, 5, 2]}
-        intensity={0.6}
-        color={"#a0a0ff"}
-      />
-
-      {/* Rim/Back Light - outlines the model from behind */}
-      <spotLight
-        position={[0, 5, -5]}
-        intensity={1}
-        angle={0.4}
-        penumbra={1}
-        color={"#4cc9f0"}
-      />
-    </>
-  );
+    return (
+        <>
+          <spotLight position={[10,10,1]} intensity={100}
+          angle={1}
+          penumbra={0.2}
+          color="white"/>
+          <spotLight position={[3,5,3]} intensity={40}
+          angle={2}
+          penumbra={0.2}
+          color="green"/>
+          <spotLight position={[1,5,5]} intensity={40}
+          angle={2}
+          penumbra={0.2}
+          color="4cc9f0"/>
+          <spotLight position={[-1,-5,5]} intensity={40}
+          angle={0.5}
+          penumbra={20}
+          color="4cc9f0"/>
+          <spotLight position={[-0,-10,1]} intensity={10}
+          angle={0.5}
+          penumbra={20}
+          color="blue"/>
+          <primitive 
+          object={new THREE.RectAreaLight('#a259ff',8,2,4)}
+          position={[0,10]}
+          penumbra={[-Math.Pi/4,Math.Pi/4,0]}
+          />
+         
+        </>
+    );
 };
 
 export default HeroLight;
