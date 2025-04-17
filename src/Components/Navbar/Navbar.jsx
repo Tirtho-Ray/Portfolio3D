@@ -69,7 +69,7 @@ const Navbar = () => {
         ref={navbarRef}
         className="fixed w-full top-10 left-1/2 transform -translate-x-1/2 z-50 px-2 md:px-4 lg:px-6"
       >
-        <div className="flex justify-between items-center bg-[#575353] shadow-md rounded-3xl py-4 max-w-7xl mx-auto px-3 md:px-6 lg:px-6">
+        <div className="flex justify-between items-center bg-[#575353] shadow-md rounded-3xl py-4 max-w-7xl mx-auto px-4 md:px-6 lg:px-6">
           <div className="md:text-xl lg:text-2xl font-bold text-white tracking-tight">
             <Link to="/">Tirtho Dev</Link>
           </div>

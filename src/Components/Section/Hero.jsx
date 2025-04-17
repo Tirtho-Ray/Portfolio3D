@@ -5,6 +5,7 @@ import { GiBrain } from "react-icons/gi";
 import { FaPaintBrush } from "react-icons/fa";
 import { FaCode } from "react-icons/fa6";
 import Button from "../ui/Button";
+import HeroExperience from "../model/Hero-Model/HeroExperience";
 
 const words = [
   {
@@ -25,7 +26,6 @@ const words = [
 const Hero = () => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
 
-  // Word change animation
   useEffect(() => {
     const interval = setInterval(() => {
       gsap.to(".changing-word", {
@@ -41,7 +41,6 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Word fade up
   useEffect(() => {
     gsap.fromTo(
       ".changing-word",
@@ -50,7 +49,6 @@ const Hero = () => {
     );
   }, [currentWordIndex]);
 
-  // Initial fade-up animation for all h1 lines one-by-one
   useEffect(() => {
     gsap.fromTo(
       ".hero-line",
@@ -66,8 +64,9 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="mt-28 mb-28">
-      <div>
+    <div className="relative h-screen w-full overflow-hidden md:flex items-center justify-between px-4">
+      {/* Left Text Section */}
+      <div className="w-full md:w-1/2 z-10">
         <div className="text-2xl md:text-4xl lg:text-5xl font-bold">
           <h1 className="hero-line flex items-center gap-3">
             Shaping{" "}
@@ -79,20 +78,22 @@ const Hero = () => {
           <h1 className="hero-line mt-2">Into The Real Project</h1>
           <h1 className="hero-line mt-2">That Deliver The World</h1>
         </div>
-        <p className="text-white-50 md:text-xl relative z-10 pointer-events-none mt-5 hero-line ">
-        Hi, I’m Tirtho Dev, a developer based in Croatia with a passion for
-        code.
+        <p className="text-white-50 md:text-xl relative z-10 pointer-events-none mt-5 hero-line">
+          Hi, I’m Tirtho Dev, a developer based in Croatia with a passion for
+          code.
         </p>
-        {/* work button */}
-        <div className="mt-4 hero-line">
-        <Button
-              text="See My Work"
-              
-            />
+        <div className="mt-4 hero-line relative">
+          <Button text="See My Work" />
         </div>
       </div>
+
+      {/* Right 3D Section */}
+      <div className="absolute top-0 right-0 mt-0 md:mt-0 md:top-10 md:right-[-80px] w-full md:w-[70%] h-full z-0">
+  <HeroExperience />
+</div>
     </div>
   );
 };
+
 
 export default Hero;
