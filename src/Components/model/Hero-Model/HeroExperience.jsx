@@ -3,15 +3,15 @@ import { Canvas } from "@react-three/fiber";
 import React from "react";
 import { useMediaQuery } from "react-responsive";
 import { Room } from "./RoomModel";
+import HeroLight from "./HeroLight";
 
 const HeroExperience = () => {
   const isTablet = useMediaQuery({ query: "(max-width:1024px)" });
   const isMobile = useMediaQuery({ query: "(max-width:768px)" });
 
   return (
-    <Canvas camera={{ position: [0, 2, 10], fov: 45 }}>
-      <ambientLight intensity={0.2} />
-      <directionalLight position={[10, 20, 10]} intensity={1} />
+    <Canvas camera={{ position: [0, 0, 15], fov: 45 }}>
+     
       <OrbitControls
         enablePan={false}
         enableZoom={!isTablet}
@@ -20,11 +20,13 @@ const HeroExperience = () => {
         minPolarAngle={Math.PI / 5}
         maxPolarAngle={Math.PI / 2}
       />
+      <HeroLight />
       <group
-        scale={isMobile ? 1 : isTablet ? 0.8 : 1}
-        position={isMobile ? [0, -2.2, 0] : isTablet ? [0, -1.8, 0] : [0, -1.5, 0]}
-        rotation={[0, -Math.PI / 4, 0]}
+        scale={isMobile ? 0.6 : isTablet ? 0.8 : 1}
+        position={isMobile ? [0, -1.2, 0] : isTablet ? [0,-2.35,0] : [0, -2.5, 0]}
+        rotation={[0, -Math.PI / -13, 0]}
       >
+         {/* position={[0,-0.35,0]} */}
         <Room />
       </group>
     </Canvas>
