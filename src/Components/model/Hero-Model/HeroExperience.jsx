@@ -13,7 +13,9 @@ const HeroExperience = () => {
     <Canvas camera={{ position: [0, 0, 15], fov: 45 }}
     shadows
     gl={{ antialias: true }}
+    
     >
+           <ambientLight intensity={0.3} />
      
       <OrbitControls
         enablePan={false}
