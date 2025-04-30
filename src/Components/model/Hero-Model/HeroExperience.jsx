@@ -30,7 +30,7 @@ const HeroExperience = () => {
       <HeroLight />
       <group
         scale={isMobile ? 0.6 : isTablet ? 0.8 : 1}
-        position={isMobile ? [0, -1.2, 0] : isTablet ? [0,-2,0] : [0, -2.5, 0]}
+        position={isMobile ? [-0.80, -1.9, -0.8] : isTablet ? [0,-2,0] : [0, -2.5, 0]}
         rotation={[0, -Math.PI / -13, 0]}
       >
          {/* position={[0,-0.35,0]} */}
