@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { FiMenu, FiX } from "react-icons/fi";
 import SongBtn from "../ui/SongBtn";
@@ -11,7 +10,6 @@ const Navbar = () => {
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
 
-  // Navbar Scroll Hide/Show
   useEffect(() => {
     const handleScroll = () => {
       if (!ticking.current) {
@@ -38,7 +36,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [menuOpen]);
 
-  // Open Menu Animation
   const openMenu = () => {
     setMenuOpen(true);
     gsap.fromTo(
@@ -46,10 +43,9 @@ const Navbar = () => {
       { y: "-100%", opacity: 0 },
       { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }
     );
-    document.body.style.overflow = "hidden"; // Prevent scroll
+    document.body.style.overflow = "hidden";
   };
 
-  // Close Menu Animation
   const closeMenu = () => {
     gsap.to(overlayRef.current, {
       y: "-100%",
@@ -71,14 +67,14 @@ const Navbar = () => {
       >
         <div className="flex justify-between items-center bg-[#575353] shadow-md rounded-3xl py-4 max-w-7xl mx-auto px-4 md:px-6 lg:px-6">
           <div className="md:text-xl lg:text-2xl font-bold text-white tracking-tight">
-            <Link to="/">Tirtho Dev</Link>
+            <a href="#">Tirtho Dev</a>
           </div>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex space-x-10 text-white font-medium md:text-md lg:text-lg">
-            <Link to="/" className="hover:text-red-400 transition duration-200">Work</Link>
-            <Link to="/" className="hover:text-red-400 transition duration-200">Experience</Link>
-            <Link to="/" className="hover:text-red-400 transition duration-200">Projects</Link>
+            <a href="#work" className="hover:text-red-400 transition duration-200">Work</a>
+            <a href="#experience" className="hover:text-red-400 transition duration-200">Experience</a>
+            <a href="#projects" className="hover:text-red-400 transition duration-200">Projects</a>
           </nav>
 
           {/* Buttons */}
@@ -110,10 +106,10 @@ const Navbar = () => {
           ref={overlayRef}
           className="fixed top-0 left-0 w-full h-screen bg-[#1e1e1e] z-[999] flex flex-col items-center justify-center text-white text-3xl space-y-8 overflow-hidden"
         >
-          <Link to="/" onClick={closeMenu}>Work</Link>
-          <Link to="/" onClick={closeMenu}>Experience</Link>
-          <Link to="/" onClick={closeMenu}>Projects</Link>
-          <Link to="/" onClick={closeMenu}>Contact Me</Link>
+          <a href="#work" onClick={closeMenu}>Work</a>
+          <a href="#experience" onClick={closeMenu}>Experience</a>
+          <a href="#projects" onClick={closeMenu}>Projects</a>
+          <a href="#contact" onClick={closeMenu}>Contact Me</a>
         </div>
       )}
     </>
