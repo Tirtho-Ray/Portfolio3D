@@ -62,6 +62,20 @@ const Hero = () => {
       }
     );
   }, []);
+  useEffect(() => {
+    gsap.fromTo(
+      ".hero-3d-container",
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        ease: "power3.out",
+        delay: 1,
+      }
+    );
+  }, []);
+  
 
   return (
     <div className="relative h-screen w-full overflow-hidden md:flex items-center justify-between px-4">
@@ -89,7 +103,7 @@ const Hero = () => {
 
       {/* Right 3D Section */}
       <figure>
-        <div className="absolute top-0 right-0 mt-0 md:mt-0 md:top-10 md:right-[-80px] w-full md:w-[70%] h-full z-0">
+        <div className="hero-3d-container absolute top-0 right-0 mt-0 md:mt-0 md:top-10 md:right-[-80px] w-full md:w-[70%] h-full z-0">
           <HeroExperience />
         </div>
       </figure>
