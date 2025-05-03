@@ -62,6 +62,7 @@ const Hero = () => {
       }
     );
   }, []);
+  //for 3d m
   useEffect(() => {
     gsap.fromTo(
       ".hero-3d-container",
@@ -107,6 +108,7 @@ const Hero = () => {
           <HeroExperience />
         </div>
       </figure>
+     
     </div>
   );
 };
