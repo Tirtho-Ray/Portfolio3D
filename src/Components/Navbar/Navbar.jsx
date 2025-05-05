@@ -65,8 +65,8 @@ const Navbar = () => {
         ref={navbarRef}
         className="fixed w-full top-10 left-1/2 transform -translate-x-1/2 z-50 px-2 md:px-4 lg:px-6"
       >
-        <div className="flex justify-between items-center bg-[#575353] shadow-md rounded-3xl py-4 max-w-7xl mx-auto px-4 md:px-6 lg:px-6">
-          <div className="md:text-xl lg:text-2xl font-bold text-white tracking-tight">
+        <div className="flex justify-between items-center bg-[#575353] shadow-md rounded-4xl md:rounded-3xl py-4 max-w-7xl mx-auto px-4 md:px-6 lg:px-6">
+          <div className=" text-[15px] md:text-xl lg:text-2xl font-bold text-white-50 tracking-tight">
             <a href="#">Tirtho Dev</a>
           </div>
 
@@ -80,18 +80,22 @@ const Navbar = () => {
           {/* Buttons */}
           <div className="flex items-center gap-3">
             <div className="relative group overflow-hidden inline-block rounded-xl  md:block">
-              <button className="relative z-10 px-6 py-2 text-white border border-white rounded-xl font-semibold group-hover:text-black transition-colors duration-1000">
+              <button className="relative z-10 px-2 md:px-6 py-1 md:py-2 text-white border border-white rounded-xl font-semibold group-hover:text-black transition-colors duration-1000 text-[13px]">
                 Contact Me
               </button>
               <span className="absolute inset-0 flex items-center justify-center">
                 <span className="w-2 h-2 bg-[#e7e6ef] rounded-xl scale-0 group-hover:scale-[100] transition-transform duration-700 ease-in-out origin-center z-0"></span>
               </span>
             </div>
+
+            {/* here add song btn */}
+            <div>
             <SongBtn />
+            </div>
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden text-white text-3xl"
+              className="md:hidden text-white text-2xl md:text-3xl"
               onClick={menuOpen ? closeMenu : openMenu}
             >
               {menuOpen ? <FiX /> : <FiMenu />}

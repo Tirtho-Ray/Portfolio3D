@@ -41,7 +41,7 @@ const Button = ({ text, className }) => {
 
   return (
     <button
-      className={`group flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold text-lg transition-all duration-300 hover:from-indigo-500 hover:to-blue-600 ${className}`}
+      className={`group flex items-center gap-2 text-[13px] px-4 py-2 md:px-6 md:py-3 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold text-lg transition-all duration-300 hover:from-indigo-500 hover:to-blue-600 ${className}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
