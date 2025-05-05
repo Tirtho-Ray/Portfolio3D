@@ -79,7 +79,7 @@ const Navbar = () => {
 
           {/* Buttons */}
           <div className="flex items-center gap-3">
-            <div className="relative group overflow-hidden inline-block rounded-xl hidden md:block">
+            <div className="relative group overflow-hidden inline-block rounded-xl  md:block">
               <button className="relative z-10 px-6 py-2 text-white border border-white rounded-xl font-semibold group-hover:text-black transition-colors duration-1000">
                 Contact Me
               </button>
@@ -102,15 +102,15 @@ const Navbar = () => {
 
       {/* Mobile Full Screen Overlay */}
       {menuOpen && (
-        <div
-          ref={overlayRef}
-          className="fixed top-0 left-0 w-full h-screen bg-[#1e1e1e] z-[999] flex flex-col items-center justify-center text-white text-3xl space-y-8 overflow-hidden"
-        >
-          <a href="#work" onClick={closeMenu}>Work</a>
-          <a href="#experience" onClick={closeMenu}>Experience</a>
-          <a href="#projects" onClick={closeMenu}>Projects</a>
-          <a href="#contact" onClick={closeMenu}>Contact Me</a>
-        </div>
+       <div
+       ref={overlayRef}
+       className="fixed inset-0 w-full h-full bg-[#1e1e1e] z-[999] flex flex-col items-center justify-center text-white text-3xl space-y-8 px-6 box-border"
+     >
+        <a href="#work" onClick={closeMenu}>Work</a>
+        <a href="#experience" onClick={closeMenu}>Experience</a>
+        <a href="#projects" onClick={closeMenu}>Projects</a>
+        <a href="#contact" onClick={closeMenu}>Contact Me</a>
+      </div>
       )}
     </>
   );

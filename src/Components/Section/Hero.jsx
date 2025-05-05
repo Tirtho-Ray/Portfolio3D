@@ -6,6 +6,7 @@ import { FaPaintBrush } from "react-icons/fa";
 import { FaCode } from "react-icons/fa6";
 import Button from "../ui/Button";
 import HeroExperience from "../model/Hero-Model/HeroExperience";
+import AnimatedCounter from "../ui/AnimitedCounter";
 
 const words = [
   {
@@ -18,7 +19,7 @@ const words = [
   },
   { text: "Concepts", icon: <GiBrain className="text-pink-400" size={28} /> },
   {
-    text: "Designs",
+    text: "Designs", 
     icon: <FaPaintBrush className="text-green-400" size={26} />,
   },
 ];
@@ -79,6 +80,7 @@ const Hero = () => {
   
 
   return (
+    <>
     <div className="relative h-screen w-full overflow-hidden md:flex items-center justify-between px-4">
       {/* Left Text Section */}
       <div className="w-full md:w-1/2 z-10">
@@ -110,6 +112,8 @@ const Hero = () => {
       </figure>
      
     </div>
+    <AnimatedCounter />
+    </>
   );
 };
 
