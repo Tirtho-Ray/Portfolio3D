@@ -22,23 +22,24 @@ const HeroExperience = () => {
         enablePan={false}
         enableZoom={!isTablet}
         minDistance={18}
-        maxDistance={30}
+        maxDistance={60}
         minPolarAngle={Math.PI / 10}
         maxPolarAngle={Math.PI / 0}
       />
 
       <HeroLight />
-      <Particles count={100} />
+     
       <group
-        scale={isMobile ? 0.6 : isTablet ? 0.8 : 1}
+        scale={isMobile ? 1 : isTablet ? 1 : 0.98}
         position={
-          isMobile ? [-0.8, -1.9, -0.8] : isTablet ? [0, -2, 0] : [0, -2.5, 0]
+          isMobile ? [-0.8, -2.9, -0.8] : isTablet ? [0, -2, 0] : [0, -2.5, 0]
         }
         rotation={[0, -Math.PI / -13, 0]}
       >
         {/* position={[0,-0.35,0]} */}
         <Room />
       </group>
+       <Particles count={180} />
     </Canvas>
   );
 };

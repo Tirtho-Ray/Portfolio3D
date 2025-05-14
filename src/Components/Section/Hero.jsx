@@ -81,10 +81,10 @@ const Hero = () => {
 
   return (
     <>
-    <div className="relative h-screen w-full overflow-hidden md:flex items-center justify-between px-4">
+    <div className="relative h-screen w-full overflow-hidden md:flex items-center justify-between">
       {/* Left Text Section */}
       <div className="w-full md:w-1/2 z-10">
-        <div className="text-2xl md:text-4xl lg:text-5xl font-bold">
+        <div className="text-2xl md:text-4xl lg:text-5xl font-bold ">
           <h1 className="hero-line flex items-center gap-3">
             Shaping{" "}
             <span className="changing-word inline-flex items-center gap-2 text-blue-400">
@@ -99,20 +99,20 @@ const Hero = () => {
           Hi, I’m Tirtho Dev, a developer based in Croatia with a passion for
           code.
         </p>
-        <div className="mt-4 hero-line relative">
+        <div className="mt-4 hero-line relative z-10">
           <Button text="See My Work" />
         </div>
       </div>
 
       {/* Right 3D Section */}
       <figure>
-        <div className="hero-3d-container absolute top-0 right-0 mt-0 md:mt-0 md:top-10 md:right-[-80px] w-full md:w-[70%] h-full z-0">
+        <div className="hero-3d-container absolute top-0 right-0 mt-52 md:mt-0 md:top-10 md:right-[-80px] w-full md:w-[70%] h-[400px] md:h-full z-0">
           <HeroExperience />
         </div>
       </figure>
      
     </div>
-    <AnimatedCounter />
+    {/* <AnimatedCounter /> */}
     </>
   );
 };

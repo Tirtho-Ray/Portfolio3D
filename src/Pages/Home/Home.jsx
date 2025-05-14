@@ -4,7 +4,7 @@ import Hero from '../../Components/Section/Hero';
 
 const Home = () => {
     return (
-        <div className='' >
+        <div className='px-1' >
             <Hero />
         </div>
     );

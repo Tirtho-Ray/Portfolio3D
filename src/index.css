@@ -1,35 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
 @import "tailwindcss";
 
-:root {
-  --gradient: radial-gradient(circle, #e5e5e5 0%, #fff 100%);
-}
-
-:root {
-  --gradient: radial-gradient(circle, #e5e5e5 0%, #fff 100%);
-}
-
-* {
-  box-sizing: border-box;
-}
 
 
 html,
 body {
-  width: 100%;
-  max-width: 100vw;
-  overflow-x: hidden;
   background-color: black;
   color: white;
   scroll-behavior: smooth;
-  font-family: "Mona Sans", sans-serif;
+
 }
 /* 
 section {
   width: 100dvw;
 } */
 
-@theme {
+/* @theme {
   --font-sans: "Mona Sans", sans-serif;
   --color-white-50: #d9ecff;
   --color-black-50: #1c1c21;
@@ -37,41 +23,7 @@ section {
   --color-black-200: #282732;
   --color-blue-50: #839cb5;
   --color-blue-100: #2d2d38;
-}
+} */
 
-/* Add this CSS to your global styles or wherever your styles are defined */
 
-.slide {
-  display: inline-block;
-  overflow: hidden;
-  height: 1em; 
-  vertical-align: bottom;
-  margin-left: 8px;
-}
-
-.wrapper {
-  display: inline-block;
-  animation: wordSlider 6s infinite ease-in-out;
-}
-
-.wrapper span {
-  display: block;
-  height: 1em; /* Match the slide height */
-}
-
-/* Keyframes to change word every 2s */
-@keyframes wordSlider {
-  0% {
-    transform: translateY(0%);
-  }
-  33.33% {
-    transform: translateY(-100%);
-  }
-  66.66% {
-    transform: translateY(-200%);
-  }
-  100% {
-    transform: translateY(0%);
-  }
-}
 

@@ -1,85 +1,75 @@
-import React, { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
+import React, { useState, useRef, useEffect } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import SongBtn from "../ui/SongBtn";
+import { gsap } from "gsap";
 
 const Navbar = () => {
-  const navbarRef = useRef(null);
-  const overlayRef = useRef(null);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const lastScrollY = useRef(0);
-  const ticking = useRef(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const mobileMenuRef = useRef(null);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!ticking.current) {
-        window.requestAnimationFrame(() => {
-          const currentScrollY = window.scrollY;
+    const menuItems = mobileMenuRef.current?.children;
 
-          if (navbarRef.current && !menuOpen) {
-            gsap.to(navbarRef.current, {
-              y: currentScrollY > lastScrollY.current ? -150 : 0,
-              duration: 0.6,
-              ease: "power2.out",
-            });
-          }
-
-          lastScrollY.current = currentScrollY;
-          ticking.current = false;
-        });
-
-        ticking.current = true;
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [menuOpen]);
-
-  const openMenu = () => {
-    setMenuOpen(true);
-    gsap.fromTo(
-      overlayRef.current,
-      { y: "-100%", opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }
-    );
-    document.body.style.overflow = "hidden";
-  };
-
-  const closeMenu = () => {
-    gsap.to(overlayRef.current, {
-      y: "-100%",
-      opacity: 0,
-      duration: 0.8,
-      ease: "power2.inOut",
-      onComplete: () => {
-        setMenuOpen(false);
-        document.body.style.overflow = "auto";
-      },
-    });
-  };
+    if (isMobileMenuOpen && menuItems) {
+      gsap.to(mobileMenuRef.current, {
+        opacity: 1,
+        display: "flex",
+        duration: 0.3,
+        ease: "power3.out",
+      });
+      gsap.fromTo(
+        menuItems,
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.15, duration: 0.6, ease: "power3.out" }
+      );
+    } else if (mobileMenuRef.current) {
+      gsap.to(menuItems, {
+        y: -30,
+        opacity: 0,
+        stagger: 0.05,
+        duration: 0.3,
+        ease: "power3.in",
+        onComplete: () => {
+          gsap.to(mobileMenuRef.current, {
+            display: "none",
+            opacity: 0,
+            duration: 0.1,
+          });
+        },
+      });
+    }
+  }, [isMobileMenuOpen]);
 
   return (
     <>
-      <nav
-        ref={navbarRef}
-        className="fixed w-full top-10 left-1/2 transform -translate-x-1/2 z-50 px-2 md:px-4 lg:px-6"
-      >
-        <div className="flex justify-between items-center bg-[#575353] shadow-md rounded-4xl md:rounded-3xl py-4 max-w-7xl mx-auto px-4 md:px-6 lg:px-6">
-          <div className=" text-[15px] md:text-xl lg:text-2xl font-bold text-white-50 tracking-tight">
-            <a href="#">Tirtho Dev</a>
-          </div>
+      {/* Navbar */}
+      <div className="fixed top-5 md:left-1/2 md:transform md:-translate-x-1/2 z-50 w-full px-4 md:px-6 lg:px-10">
+        <div className="bg-[#333] text-white rounded-3xl shadow-lg max-w-7xl mx-auto py-3 px-5 md:px-10 flex justify-between items-center">
+          <a href="#" className="text-lg md:text-2xl font-bold tracking-tight">
+            Tirtho Dev
+          </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex space-x-10 text-white font-medium md:text-md lg:text-lg">
-            <a href="#work" className="hover:text-red-400 transition duration-200">Work</a>
-            <a href="#experience" className="hover:text-red-400 transition duration-200">Experience</a>
-            <a href="#projects" className="hover:text-red-400 transition duration-200">Projects</a>
-          </nav>
+          <div className="hidden md:flex gap-10 text-md lg:text-lg font-medium">
+            <a href="#work" className="hover:text-red-400 transition">
+              Work
+            </a>
+            <a href="#experience" className="hover:text-red-400 transition">
+              Experience
+            </a>
+            <a href="#projects" className="hover:text-red-400 transition">
+              Projects
+            </a>
+          </div>
 
-          {/* Buttons */}
+         
+          {/* Action Buttons */}
           <div className="flex items-center gap-3">
-            <div className="relative group overflow-hidden inline-block rounded-xl  md:block">
+            <div className="relative group overflow-hidden  rounded-xl md:block hidden md:visible">
               <button className="relative z-10 px-2 md:px-6 py-1 md:py-2 text-white border border-white rounded-xl font-semibold group-hover:text-black transition-colors duration-1000 text-[13px]">
                 Contact Me
               </button>
@@ -87,35 +77,52 @@ const Navbar = () => {
                 <span className="w-2 h-2 bg-[#e7e6ef] rounded-xl scale-0 group-hover:scale-[100] transition-transform duration-700 ease-in-out origin-center z-0"></span>
               </span>
             </div>
-
-            {/* here add song btn */}
-            <div>
             <SongBtn />
-            </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden text-white text-2xl md:text-3xl"
-              onClick={menuOpen ? closeMenu : openMenu}
-            >
-              {menuOpen ? <FiX /> : <FiMenu />}
+            {/* for mobile menu */}
+            <div className="md:hidden z-50">
+            <button onClick={toggleMobileMenu} className="text-white text-2xl">
+              { <FiMenu />}
             </button>
           </div>
-        </div>
-      </nav>
+          </div>
+           {/* Mobile Menu Button */}
+          
 
-      {/* Mobile Full Screen Overlay */}
-      {menuOpen && (
-       <div
-       ref={overlayRef}
-       className="fixed inset-0 w-full h-full bg-[#1e1e1e] z-[999] flex flex-col items-center justify-center text-white text-3xl space-y-8 px-6 box-border"
-     >
-        <a href="#work" onClick={closeMenu}>Work</a>
-        <a href="#experience" onClick={closeMenu}>Experience</a>
-        <a href="#projects" onClick={closeMenu}>Projects</a>
-        <a href="#contact" onClick={closeMenu}>Contact Me</a>
+        </div>
       </div>
-      )}
+      
+
+      {/* Mobile Fullscreen Overlay */}
+      <div
+        ref={mobileMenuRef}
+        className={`fixed inset-0 bg-[#1e1e1e] z-[999] flex-col items-center justify-center text-white text-3xl space-y-10 px-6 transition-opacity duration-300 ${
+          isMobileMenuOpen ? "flex opacity-100" : "hidden opacity-0"
+        }`}
+      >
+          <div className="md:hidden z-50">
+            <button onClick={toggleMobileMenu} className="text-white text-2xl bg-green-500 rounded-full p-2">
+              {<FiX />}
+            </button>
+          </div>
+        <a href="#work" onClick={() => setIsMobileMenuOpen(false)}>
+          Work
+        </a>
+        <a href="#experience" onClick={() => setIsMobileMenuOpen(false)}>
+          Experience
+        </a>
+        <a href="#projects" onClick={() => setIsMobileMenuOpen(false)}>
+          Projects
+        </a>
+        <div className="relative group overflow-hidden inline-block rounded-xl">
+          <button className="relative z-10 px-6 py-2 text-white border border-white rounded-xl font-semibold group-hover:text-black transition-colors duration-1000 text-lg">
+            Contact Me
+          </button>
+          <span className="absolute inset-0 flex items-center justify-center">
+            <span className="w-2 h-2 bg-[#e7e6ef] rounded-xl scale-0 group-hover:scale-[100] transition-transform duration-700 ease-in-out origin-center z-0"></span>
+          </span>
+        </div>
+      </div>
     </>
   );
 };

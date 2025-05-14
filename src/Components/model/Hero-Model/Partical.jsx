@@ -12,7 +12,7 @@ const Particles = ({ count = 100 }) => {
         x: (Math.random() - 0.5) * 15,
         y: Math.random() * 15,
         z: (Math.random() - 0.5) * 15,
-        speed: 0.002 + Math.random() * 0.01,
+        speed: 0.009 + Math.random() * 0.01,
       });
     }
     return data;
