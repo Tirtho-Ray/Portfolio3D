@@ -47,7 +47,7 @@ const Navbar = () => {
   return (
     <>
       {/* Navbar */}
-      <div className="fixed top-5 md:left-1/2 md:transform md:-translate-x-1/2 z-50 w-full px-4 md:px-6 lg:px-10">
+      <div className="fixed top-8 md:top-5 md:left-1/2 md:transform md:-translate-x-1/2 z-50 w-full px-4 md:px-6 lg:px-10">
         <div className="bg-[#333] text-white rounded-3xl shadow-lg max-w-7xl mx-auto py-3 px-5 md:px-10 flex justify-between items-center">
           <a href="#" className="text-lg md:text-2xl font-bold tracking-tight">
             Tirtho Dev
