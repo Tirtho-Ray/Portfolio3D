@@ -1,20 +1,47 @@
+import { useEffect } from "react";
+import Lenis from "@studio-freight/lenis";
 import Navbar from "../Components/Navbar/Navbar";
 import Footer from "../Components/Footer/Footer";
-import Home from './../Pages/Home/Home';
+import Hero from "../Components/Section/Hero";
 
 const MainLayout = () => {
-  return (
-   <div className="md:max-w-7xl mx-auto">
-      <div className="z-50">
-        <Navbar />
-      </div>
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+      smooth: true,
+      smoothTouch: true,
+      direction: "vertical",
+      gestureDirection: "vertical",
+    });
 
-      <main className="pt-28 lg:pt-24 px-2 md:px-4 lg:px-0 text-white min-h-[70vh]">
-        <section id="home" className="py-10"><Home /></section>
-        <section id="work" className="py-10 h-screen">Work Section</section>
-        <section id="experience" className="py-10">Experience Section</section>
-        <section id="projects" className="py-10">Projects Section</section>
-        <section id="contact" className="py-10">Contact Section</section>
+    const raf = (time) => {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    };
+
+    requestAnimationFrame(raf);
+
+    // Optional scroll listener
+    // lenis.on("scroll", ({ scroll }) => {
+    //   console.log(scroll);
+    // });
+
+    return () => {
+      lenis.destroy(); // cleanup
+    };
+  }, []);
+
+  return (
+    <div className="md:max-w-7xl mx-auto">
+      <div><Navbar /></div>
+
+      <main className="pt-28 lg:pt-0 px-2 md:px-4 lg:px-0 text-white">
+        <section id="home"><Hero /></section>
+        <section id="work">Work Section</section>
+        <section id="experience">Experience Section</section>
+        <section id="projects">Projects Section</section>
+        <section id="contact">Contact Section</section>
       </main>
 
       <Footer />

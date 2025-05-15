@@ -19,7 +19,7 @@ const words = [
   },
   { text: "Concepts", icon: <GiBrain className="text-pink-400" size={28} /> },
   {
-    text: "Designs", 
+    text: "Designs",
     icon: <FaPaintBrush className="text-green-400" size={26} />,
   },
 ];
@@ -77,42 +77,44 @@ const Hero = () => {
       }
     );
   }, []);
-  
 
   return (
     <>
-    <div className="relative h-screen w-full overflow-hidden md:flex items-center justify-between">
-      {/* Left Text Section */}
-      <div className="w-full md:w-1/2 z-10">
-        <div className="text-2xl md:text-4xl lg:text-5xl font-bold ">
-          <h1 className="hero-line flex items-center gap-3">
-            Shaping{" "}
-            <span className="changing-word inline-flex items-center gap-2 text-blue-400">
-              {words[currentWordIndex].icon}
-              {words[currentWordIndex].text}
-            </span>
-          </h1>
-          <h1 className="hero-line mt-2">Into The Real Project</h1>
-          <h1 className="hero-line mt-2">That Deliver The World</h1>
+      <div className="relative h-screen w-full overflow-hidden md:flex items-center justify-between">
+        {/* Left Text Section */}
+        <div className="w-full md:w-1/2 z-10">
+          <div className="text-2xl md:text-4xl lg:text-5xl font-bold ">
+            <h1 className="hero-line flex items-center gap-3">
+              Shaping{" "}
+              <span className="changing-word inline-flex items-center gap-2 text-blue-400">
+                {words[currentWordIndex].icon}
+                {words[currentWordIndex].text}
+              </span>
+            </h1>
+            <h1 className="hero-line mt-2">Into The Real Project</h1>
+            <h1 className="hero-line mt-2">That Deliver The World</h1>
+          </div>
+          <p className="text-white-50 md:text-xl relative z-10 pointer-events-none mt-5 hero-line">
+            Hi, I’m Tirtho Dev, a developer based in Croatia with a passion for
+            code.
+          </p>
+          <div className="mt-4 hero-line relative z-10">
+            <Button text="See My Work" />
+          </div>
         </div>
-        <p className="text-white-50 md:text-xl relative z-10 pointer-events-none mt-5 hero-line">
-          Hi, I’m Tirtho Dev, a developer based in Croatia with a passion for
-          code.
-        </p>
-        <div className="mt-4 hero-line relative z-10">
-          <Button text="See My Work" />
-        </div>
-      </div>
 
-      {/* Right 3D Section */}
-      <figure>
-        <div className="hero-3d-container absolute top-0 right-0 mt-52 md:mt-0 md:top-10 md:right-[-80px] w-full md:w-[70%] h-[400px] md:h-full z-0">
-          <HeroExperience />
-        </div>
-      </figure>
-     
-    </div>
-    {/* <AnimatedCounter /> */}
+        {/* Right 3D Section */}
+        <figure>
+          <div
+            className="hero-3d-container absolute top-0 right-0 mt-52 md:mt-5 md:top-10 md:right-[-80px] w-full md:w-[70%] h-[400px] md:h-full z-0"
+            onWheel={(e) => e.stopPropagation()}
+            onTouchStart={(e) => e.stopPropagation()}
+          >
+            <HeroExperience />
+          </div>
+        </figure>
+      </div>
+      {/* <AnimatedCounter /> */}
     </>
   );
 };

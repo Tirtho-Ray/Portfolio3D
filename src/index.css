@@ -7,9 +7,14 @@ html,
 body {
   background-color: black;
   color: white;
-  scroll-behavior: smooth;
+ overscroll-behavior: none;
+  scroll-behavior: auto !important;
 
 }
+/* ::-webkit-scrollbar {
+  width: 6px;   /* y-axis scrollbar */
+  /* height: 6px;  x-axis scrollbar */
+/* } */
 /* 
 section {
   width: 100dvw;
