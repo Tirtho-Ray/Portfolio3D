@@ -90,40 +90,40 @@ const Navbar = () => {
             : "top-0"
         }`}
       >
-        <div className="md:bg-none text-white rounded-3xl shadow-lg max-w-7xl mx-auto py-3 md:py-4 px-5 md:px-10 flex justify-between items-center border-1 md:border-0">
+        <div className="md:bg-none text-white rounded-3xl shadow-lg max-w-7xl mx-auto py-3 md:py-4 px-5 md:px-10 flex justify-between items-center border-1 md:border-0 ">
           <button
             onClick={() => handleScroll("#home")}
-            className="text-lg md:text-2xl font-bold tracking-tight"
+            className="text-lg md:text-2xl font-bold tracking-tight cursor-pointer"
           >
             Tirtho Dev
           </button>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex gap-10 text-md lg:text-lg font-medium">
+          <div className="hidden md:flex gap-10 text-md lg:text-lg font-medium ">
             <button
               onClick={() => handleScroll("#work")}
-              className="relative group transition text-white"
+              className="relative group transition text-white cursor-pointer"
             >
               Work
               <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
             </button>
             <button
               onClick={() => handleScroll("#skills")}
-              className="relative group transition text-white"
+              className="relative group transition text-white cursor-pointer"
             >
               Skills
               <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
             </button>
             <button
               onClick={() => handleScroll("#experience")}
-              className="relative group transition text-white"
+              className="relative group transition text-white cursor-pointer"
             >
               Experience
               <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
             </button>
             <button
               onClick={() => handleScroll("#projects")}
-              className="relative group transition text-white"
+              className="relative group transition text-white cursor-pointer"
             >
               Projects
               <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
@@ -132,8 +132,8 @@ const Navbar = () => {
 
           {/* Action Buttons */}
           <div className="flex items-center gap-3">
-            <div className="relative group overflow-hidden rounded-xl md:block hidden md:visible">
-              <button className="relative z-10 px-2 md:px-6 py-1 md:py-2 text-white border border-white rounded-xl  group-hover:text-black transition-colors duration-900 text-[13px] md:text-[16px] font-bold">
+            <div className="relative group overflow-hidden rounded-xl md:block hidden md:visible cursor-pointer">
+              <button className="relative z-10 px-2 md:px-6 py-1 md:py-2 text-white border border-white rounded-xl  group-hover:text-black transition-colors duration-900 text-[13px] md:text-[16px] font-bold cursor-pointer">
                 Contact Me
               </button>
               <span className="absolute inset-0 flex items-center justify-center">

@@ -46,7 +46,7 @@ const SongBtn = () => {
   };
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 cursor-pointer">
       <button
         onClick={togglePlay}
         className="hover:bg-purple-700 text-white p-3 rounded-full transition-all duration-200"
