@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
+import { FaGithub } from "react-icons/fa";
 
 const Footer = () => {
-  const birthday = new Date('2005-03-28T00:00:00Z'); // UTC for consistency
+  const birthday = new Date('2005-03-28T00:00:00Z');
   const [timeElapsed, setTimeElapsed] = useState('');
 
   useEffect(() => {
@@ -35,9 +36,9 @@ const Footer = () => {
             A passionate full-stack developer crafting innovative digital experiences. Exploring the intersection of technology and design. Let's build something amazing together.
           </p>
           <div className="mt-4 flex space-x-4">
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-indigo-400"><i className="fab fa-github text-xl"></i></a>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-indigo-400"><i className="fab fa-linkedin text-xl"></i></a>
-            <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-indigo-400"><i className="fab fa-twitter text-xl"></i></a>
+            <a href="https://github.com/Tirtho-Ray"  className="text-gray-400 hover:text-indigo-400">{FaGithub} </a>
+            <a href="https://linkedin.com/in/yourprofile"  className="text-gray-400 hover:text-indigo-400">{FaGithub}</a>
+            <a href="https://twitter.com/yourhandle"  className="text-gray-400 hover:text-indigo-400">{FaGithub}</a>
           </div>
         </div>
 
