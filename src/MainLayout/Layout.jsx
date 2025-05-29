@@ -1,10 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Lenis from "@studio-freight/lenis";
 import Navbar from "../Components/Navbar/Navbar";
 import Footer from "../Components/Footer/Footer";
 import Hero from "../Components/Section/Hero";
+import Loader from "../Components/ui/Loader";
 
 const MainLayout = () => {
+   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -31,6 +33,10 @@ const MainLayout = () => {
       lenis.destroy(); // cleanup
     };
   }, []);
+
+   if (isLoading) {
+    return <Loader onComplete={() => setIsLoading(false)} />;
+  }
 
   return (
     <div className="md:max-w-7xl mx-auto">
