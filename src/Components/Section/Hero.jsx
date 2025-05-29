@@ -57,7 +57,7 @@ const Hero = () => {
       {
         opacity: 1,
         y: 0,
-        duration: 2.8,
+        duration: 1.8,
         stagger: 0.10,
         ease: "power2.out",
       }
