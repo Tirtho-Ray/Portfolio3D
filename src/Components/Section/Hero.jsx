@@ -53,7 +53,7 @@ const Hero = () => {
   useEffect(() => {
     gsap.fromTo(
       ".hero-line",
-      { opacity: 0, y: 30 },
+      { opacity: 0, y: 3 },
       {
         opacity: 1,
         y: 0,
